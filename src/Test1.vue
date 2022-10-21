@@ -3,6 +3,7 @@
     <draggable
       v-model="items"
       item-key="id"
+      @change="$emit('change', { event: $event, someAdditionalData: { test: 1 } })"
     >
       <template #item="{ element }">
         <div class="item">{{ element.name }}</div>
@@ -18,7 +19,6 @@ export default defineComponent({
   components: {
     draggable
   },
-  emits: ['run'],
   data() {
     return {
       items: [

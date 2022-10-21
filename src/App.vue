@@ -6,8 +6,12 @@
 
 <script setup lang="ts">
 import Test1 from './Test1.vue'
-const changeHandler = () => {
-  console.log('Change event triggered in App.vue')
+const changeHandler = (payload: any) => {
+  if (payload?.someAdditionalData) {
+    console.log('Correct @change event triggered by Test1', payload)
+  } else {
+    console.log('Leaked @change event somehow passed by event handler in Test1', payload)
+  }
 }
 </script>
 
